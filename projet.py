@@ -70,14 +70,6 @@ class Analyse(Message):
                 id = i;
         this.count_max = id;
 
-    def
-
-
-
-
-
-
-
 message = Analyse("MON MESSAGE");
 message.compter_lettre();
 message.afficher_count();
