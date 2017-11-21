@@ -81,7 +81,6 @@ class Analyse(Message):
 message = Analyse("MON MESSAGE");
 message.compter_lettre();
 message.afficher_count();
-message.get_max();
 
 
 class Demo_automatique(Message):
