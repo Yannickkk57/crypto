@@ -47,8 +47,8 @@ class Message:
 
 class Analyse(Message):
     count = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    plus_utilise = ['E','A','S','']
-    count_max = -1
+    plus_utilise = ['E','A','S','I','N','T','R','L','U','O','D','C','P','M','V','G','F','B','Q','H','X','J','Y','Z','K','W'];
+
 
     def __init__(this, message):
         this.set_message(message);
@@ -61,18 +61,59 @@ class Analyse(Message):
             if c != " ":
                 this.count[(ord(c) - 65) % 26] += 1;
 
-    def get_id_max(this):
-        max = 0
-        id  = -1
+    def get_id_max_and_remove(this):
+        this.afficher_count();
+        max = 0;
+        id  = -1;
         for i in range(len(this.count)):
             if this.count[i] > max:
                 max = this.count[i];
                 id = i;
-        this.count_max = id;
+                this.count[i] = -1;
+                return id;
+        return 0;
 
-message = Analyse("MON MESSAGE");
-message.compter_lettre();
-message.afficher_count();
+    def maj_to_min(this):
+        res = "";
+        for c in this.message:
+            if c == " ":
+                res += " ";
+            else:
+                res += chr(ord(c) + 32);
+        this.set_message(res);
+
+    def replace(this, c1, c2):
+        res = "";
+        for c in this.message:
+            if c == c1:
+                res += c2;
+            else:
+                res += c;
+        this.set_message(res);
+
+    def maj_to_min_char(this, c):
+        return chr(ord(c) + 32);
+
+    def decrypter_avec_frequence(this):
+        this.compter_lettre();
+        this.afficher_count();
+        this.maj_to_min();
+        for c in this.plus_utilise:
+            this.replace(chr(this.get_id_max_and_remove() + 97), c);
+
+    def test(this):
+        this.maj_to_min();
+        this.replace('j', 'i');
+
+
+
+message = Analyse("IL SAPPELAIT STEWBALL CETAIT UN CHEVAL BLANC CETAIT MON IDOLE ET MOI JETAIS JEUNE");
+message.set_decalage(7);
+message.afficher();
+message.crypter();
+message.afficher();
+message.decrypter_avec_frequence();
+message.afficher();
 
 
 class Demo_automatique(Message):
