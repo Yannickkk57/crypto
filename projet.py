@@ -109,14 +109,12 @@ class Analyse(Message):
 
 
 message = Analyse("UN JOUR JE SERAIS LE MEILLEUR DRESSEUR JE ME BATTRAIS SANS REPIT JE FERAIS TOUT POUR ETRE VAINQUEUR");
-message.compter_lettre();
 message.set_decalage(3);
 message.afficher();
 message.crypter();
 message.afficher();
-message.decrypter_avec_frequence();
+message.decrypter();
 message.afficher();
-
 
 class Demo_automatique(Message):
     def __init__(this):
