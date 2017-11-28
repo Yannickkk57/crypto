@@ -107,8 +107,10 @@ class Analyse(Message):
 
 
 
-message = Analyse("IL SAPPELAIT STEWBALL CETAIT UN CHEVAL BLANC CETAIT MON IDOLE ET MOI JETAIS JEUNE");
-message.set_decalage(7);
+
+message = Analyse("UN JOUR JE SERAIS LE MEILLEUR DRESSEUR JE ME BATTRAIS SANS REPIT JE FERAIS TOUT POUR ETRE VAINQUEUR");
+message.compter_lettre();
+message.set_decalage(3);
 message.afficher();
 message.crypter();
 message.afficher();
